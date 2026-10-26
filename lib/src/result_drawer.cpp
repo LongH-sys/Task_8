@@ -19,7 +19,7 @@ void draw_corners(
     }
 }
 
-void draw_pose(
+void draw_poses(
     cv::Mat& frame, 
     const std::vector<std::vector<cv::Point2f>>& corners,
     const std::vector<PoseInfo>& poses)

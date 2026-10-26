@@ -6,9 +6,9 @@ find_package(OpenCV REQUIRED)
 add_subdirectory(lib)
 add_subdirectory(
     "/home/longh/vino_task/src/YoloVino"
-    "CMAKE_CURRENT_BINARY_DIR/vino_build")
+    "${CMAKE_CURRENT_BINARY_DIR}/vino_build")
 add_subdirectory(
     "../Hikrobot_task4/lib"
-    "CMAKE_CURRENT_BINARY_DIR/camera_build"
+    "${CMAKE_CURRENT_BINARY_DIR}/camera_build"
 )
 add_subdirectory(app)

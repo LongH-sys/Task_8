@@ -16,9 +16,9 @@ bool estimate_pose(
     std::vector<cv::Point3f> objectPoints =                   
     {
         {-width / 2.0f, -height / 2.0f, 0.0f},
+        {-width / 2.0f, height / 2.0f, 0.0f},
         {width / 2.0f, -height / 2.0f, 0.0f},
-        {width / 2.0f, height / 2.0f, 0.0f},
-        {-width / 2.0f, height / 2.0f, 0.0f}
+        {width / 2.0f, height / 2.0f, 0.0f}
     };                    
     cv::Mat cameraMatrix = (cv::Mat_<double>(3,3) <<          //静待相机标定 
         fx, 0, cx,
