@@ -4,10 +4,13 @@
 
 #include <opencv2/core.hpp>
 
+#include "pose_solver.h"
+
 void draw_corners(
-    cv::Mat &frame, 
-    const std::vector<cv::Point2f>& corners);
+    cv::Mat& frame, 
+    const std::vector<std::vector<cv::Point2f>>& corners);
 
 void draw_pose(
-    cv::Mat &frame,
-    const PoseInfo& pose);
+    cv::Mat& frame,
+    const std::vector<std::vector<cv::Point2f>>& corners,
+    const std::vector<PoseInfo>& poses);
