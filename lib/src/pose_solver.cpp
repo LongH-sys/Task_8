@@ -47,7 +47,7 @@ bool estimate_pose(
             rvec,
             tvec,
             false,
-            cv::SOLVEPNP_EPNP
+            cv::SOLVEPNP_IPPE
         );
         if (!success)
         {
