@@ -23,7 +23,7 @@ int main()
     auto logger = std::make_unique<YoloVino::YoloVinoLogger>(
         "/home/longh/vino_task/src/YoloVino/config/yolov8pose_vino_config.yaml");
     logger->print_yaml_info();
-    logger->set_info_level(YoloVino::LoggerInfoLevel::debug_info);
+    logger->set_info_level(YoloVino::LoggerInfoLevel::warning_info);
     YoloVino::Yolov8poseVino vino(std::move(logger));
     SdkManager sdk;
     if (!sdk.initialize())
@@ -80,7 +80,7 @@ int main()
         {
             break;
         }
-        if (cv::getWindowProperty("Task_8", cv::WND_PROP_VISIBLE) < 1)
+        if (cv::getWindowProperty("Task_8", cv::WND_PROP_AUTOSIZE) < 0)
         {
             break;
         }

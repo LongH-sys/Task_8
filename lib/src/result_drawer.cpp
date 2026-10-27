@@ -31,26 +31,26 @@ void draw_poses(
     for (int i = 0; i < static_cast<int>(poses.size()); i++)
     {
         int index = poses[i].index;
-        float x = corners[index][3].x + 10.0f;
-        float y = corners[index][3].y + 20.0f;
-        cv::Point2f org(x, y);
-        cv::Point2f distance_org(x, y + 20.0f);
+        //float x = corners[index][3].x + 10.0f;
+        //float y = corners[index][3].y + 20.0f;
+        cv::Point2f org(40.0f, 60.0f);
+        cv::Point2f distance_org(40.0f, 100.0f);
         cv::putText(
             frame,
-            cv::format("Yaw: %.2f  Pitch: %.2f  Roll: %.2f",
+            cv::format("Yaw: %.2f     Pitch: %.2f     Roll: %.2f",
                 poses[i].yaw_deg, poses[i].pitch_deg, poses[i].roll_deg),
             org,
             cv::FONT_HERSHEY_SIMPLEX,
-            0.5,
+            1.5,
             cv::Scalar(0, 255, 0),
-            1);
+            2);
         cv::putText(
             frame,
             cv::format("Distance: %.2f", poses[i].distance_mm),
             distance_org,
             cv::FONT_HERSHEY_SIMPLEX,
-            0.5,
+            1.5,
             cv::Scalar(0, 255, 0),
-            1);
+            2);
     }
 }
