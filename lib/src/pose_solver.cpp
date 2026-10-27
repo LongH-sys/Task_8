@@ -12,7 +12,7 @@ bool estimate_pose(
 {
     poses.clear();
     float width = 135.0f;
-    float height = 50.0f;
+    float height = 55.0f;
     std::vector<cv::Point3f> objectPoints =                   
     {
         {-width / 2.0f, -height / 2.0f, 0.0f},
@@ -47,7 +47,7 @@ bool estimate_pose(
             rvec,
             tvec,
             false,
-            cv::SOLVEPNP_IPPE
+            cv::SOLVEPNP_EPNP
         );
         if (!success)
         {
@@ -65,9 +65,9 @@ bool estimate_pose(
         cv::Mat R, R64;
         cv::Rodrigues(validPoses[i].rvec, R);
         R.convertTo(R64, CV_64F);
-        double roll = std::atan2(R64.at<double>(1, 0), R64.at<double>(0, 0)) * 180.0 / CV_PI;
-        double yaw = std::asin(-std::clamp(R64.at<double>(2, 0), -1.0, 1.0)) * 180.0 / CV_PI;
-        double pitch = std::atan2(R64.at<double>(2, 1), R64.at<double>(2, 2)) * 180.0 / CV_PI;
+        double yaw = std::atan2(R64.at<double>(0, 2), R64.at<double>(2, 2)) * 180.0 / CV_PI;
+        double pitch = -std::asin(std::clamp(R64.at<double>(1, 2), -1.0, 1.0)) * 180.0 / CV_PI;
+        double roll = std::atan2(R64.at<double>(1, 0), R64.at<double>(1, 1)) * 180.0 / CV_PI;
         poses.push_back({index, yaw, pitch, roll, distance});
     }
     return !poses.empty();
